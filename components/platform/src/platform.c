@@ -9,9 +9,11 @@ esp_err_t platform_get_sensor_data(SensorData *data)
     }
 
     // 假设有函数 Int_MPU6050_Get_Accel 和 Int_MPU6050_Get_Gyro 用于获取传感器数据
-    Int_MPU6050_Get_Accel(&data->mpu_ax, &data->mpu_ay, &data->mpu_az);
-    Int_MPU6050_Get_Gyro(&data->mpu_gx, &data->mpu_gy, &data->mpu_gz);
+    short ax, ay, az;
+    Int_MPU6050_Get_Accel(&ax, &ay, &az);
 
+    // 这里只使用 ax 来模拟丙酮的数据，其他数据暂时不使用
+    data->mpu_ax = ax;
     return ESP_OK;
 }
 

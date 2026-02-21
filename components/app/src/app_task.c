@@ -287,11 +287,11 @@ static size_t app_build_sensor_json(const SensorData *data, char *buf, size_t le
     cJSON_AddNumberToObject(root, "ts", (double)xTaskGetTickCount());
 
     cJSON_AddNumberToObject(data_obj, "ax", (int)data->mpu_ax);
-    cJSON_AddNumberToObject(data_obj, "ay", (int)data->mpu_ay);
-    cJSON_AddNumberToObject(data_obj, "az", (int)data->mpu_az);
-    cJSON_AddNumberToObject(data_obj, "gx", (int)data->mpu_gx);
-    cJSON_AddNumberToObject(data_obj, "gy", (int)data->mpu_gy);
-    cJSON_AddNumberToObject(data_obj, "gz", (int)data->mpu_gz);
+    // cJSON_AddNumberToObject(data_obj, "ay", (int)data->mpu_ay);
+    // cJSON_AddNumberToObject(data_obj, "az", (int)data->mpu_az);
+    // cJSON_AddNumberToObject(data_obj, "gx", (int)data->mpu_gx);
+    // cJSON_AddNumberToObject(data_obj, "gy", (int)data->mpu_gy);
+    // cJSON_AddNumberToObject(data_obj, "gz", (int)data->mpu_gz);
 
     cJSON_AddItemToObject(root, "data", data_obj);
 

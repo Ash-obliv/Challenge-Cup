@@ -4,6 +4,7 @@
 static MPU6050_DrvTypeDef s_default_driver = {0}; // 内部静态实例
 MPU6050_DrvTypeDef *g_mpu6050_driver = &s_default_driver;
 
+// 使用前要注册驱动
 void MPU6050_RegisterDriver(
     void (*read_byte)(uint8_t reg_addr, uint8_t *receive_byte),
     void (*read_bytes)(uint8_t reg_addr, uint8_t *receive_buff, uint8_t size),
@@ -16,9 +17,17 @@ void MPU6050_RegisterDriver(
     g_mpu6050_driver->MPU6050_DelayMs = delay_ms;
 }
 
+
+// 1. 向MPU6050的寄存器写入单个数据 从机地址 0x68，寄存器地址，数据
 void Int_MPU6050_WriteByte(uint8_t reg_addr, uint8_t send_byte) { g_mpu6050_driver->MPU6050_WriteByte(reg_addr, send_byte); }
+
+// 2. 从MPU6050的寄存器读取单个数据 从机地址 0x68，寄存器地址，接收数据的指针
 void Int_MPU6050_ReadByte(uint8_t reg_addr, uint8_t *receive_byte) { g_mpu6050_driver->MPU6050_ReadByte(reg_addr, receive_byte); }
+
+// 3. 从MPU6050的寄存器连续读取多个数据 从机地址 0x68，寄存器地址，接收数据的指针，数据长度
 void Int_MPU6050_ReadBytes(uint8_t reg_addr, uint8_t *receive_buff, uint8_t size) { g_mpu6050_driver->MPU6050_ReadBytes(reg_addr, receive_buff, size); }
+
+// 4. 延迟函数，单位ms
 void Int_delay_ms(uint32_t ms) { g_mpu6050_driver->MPU6050_DelayMs(ms); }
 
 /**
